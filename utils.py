@@ -4,9 +4,10 @@ import pinecone
 from sentence_transformers import SentenceTransformer
 openai_api_key= st.secrets['OPENAI_API_KEY']
 openai.api_key=openai_api_key
+PINECODE_API_KEY=st.secrets['PINECODE_API_KEY']
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-pinecone.init(api_key="259bd4db-6a71-4c28-9ea3-9c483300988b",  environment="us-west4-gcp-free")
+pinecone.init(api_key=PINECODE_API_KEY,  environment="us-west4-gcp-free")
 index = pinecone.Index('fisbot')
 
 def find_match(input):
