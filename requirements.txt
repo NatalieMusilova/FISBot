@@ -3,4 +3,3 @@ streamlit_chat
 langchain
 sentence_transformers
 openai
-pinecone
