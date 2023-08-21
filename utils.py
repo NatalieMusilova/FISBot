@@ -3,7 +3,7 @@ import streamlit as st
 import pinecone
 from sentence_transformers import SentenceTransformer
 
-openai.api_key="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"
+openai.api_key=""
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
 pinecone.init(api_key="259bd4db-6a71-4c28-9ea3-9c483300988b",  environment="us-west4-gcp-free")
