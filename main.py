@@ -29,7 +29,7 @@ if "requests" not in st.session_state:
     st.session_state["requests"] = []
 
 llm = ChatOpenAI(model_name="gpt-3.5-turbo", 
-openai_api_key="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")
+openai_api_key="")
 
 
 if "buffer_memry" not in st.session_state:
