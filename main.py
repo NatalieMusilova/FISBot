@@ -13,11 +13,35 @@ import streamlit as st
 from streamlit_chat import message
 from utils import *
 
-#title and subtitle of the application
+# Text 
 title = '<p style="font-family:sans-serif; color: #00957d; font-size: 42px; font-weight: bold;">FISBot</p>'
-st.markdown(title, unsafe_allow_html=True)
-subtitle = '<p style="font-family:verdana; color: #00957d; font-size: 19px; ">Chatbot Fakulty informatiky a statistiky Vysoké školy ekonomické v Praze</p>'
-st.markdown(subtitle, unsafe_allow_html=True)
+# Image
+img = "https://raw.githubusercontent.com/NatalieMusilova/4IZ580/main/FIS_1_logo_rgb.png" 
+
+# Create columns
+col1, col2 = st.columns(2)
+col1, col2 = st.columns([4,1.9]) # 1:3 width ratio
+# Display content 
+with col1:
+   st.markdown(title, unsafe_allow_html=True)
+with col2:
+   st.image(img, width=180)
+
+# Colored bar
+st.markdown(
+    "<hr style='height:59px;border:none;color:#00957d;background-color:#00957d;position:relative;top:-50px;'>",
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <div style="position:relative;top:-124px;text-align:center;">
+      <p style="font-family:verdana;color:white;font-size:17px;">Chatbot Fakulty informatiky a statistiky Vysoké školy ekonomické v Praze</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 
 
 
