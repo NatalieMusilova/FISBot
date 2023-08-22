@@ -13,6 +13,8 @@ import streamlit as st
 from streamlit_chat import message
 from utils import *
 
+st.set_page_config(page_title="FISBot - Natalie Musilová", page_icon="🤖", initial_sidebar_state="collapsed")
+
 # Text 
 title = '<p style="font-family:sans-serif; color: #00957d; font-size: 42px; font-weight: bold;">FISBot</p>'
 # Image
