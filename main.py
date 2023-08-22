@@ -22,12 +22,12 @@ img = "https://raw.githubusercontent.com/NatalieMusilova/4IZ580/main/FIS_1_logo_
 
 # Create columns
 col1, col2 = st.columns(2)
-col1, col2 = st.columns([4,1.9]) # 1:3 width ratio
+col1, col2 = st.columns([4,1]) # 4:1 width ratio
 # Display content 
 with col1:
    st.markdown(title, unsafe_allow_html=True)
 with col2:
-   st.image(img, width=180)
+   st.image(img, width=130)
 
 
 st.markdown("""
