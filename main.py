@@ -29,21 +29,14 @@ with col1:
 with col2:
    st.image(img, width=180)
 
-# Colored bar
-st.markdown(
-    "<hr style='height:59px;border:none;color:#00957d;background-color:#00957d;position:relative;top:-50px;'>",
-    unsafe_allow_html=True
-)
 
-st.markdown(
-    """
-    <div style="position:relative;top:-124px;text-align:center;">
-      <p style="font-family:verdana;color:white;font-size:17px;">Chatbot Fakulty informatiky a statistiky Vysoké školy ekonomické v Praze</p>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
+st.markdown("""
+<div style="background-color: #00957d; text-align: center;">
+  <p style="color: white; font-family: verdana; font-size: 17px; position: relative;">
+    Chatbot Fakulty informatiky a statistiky Vysoké školy ekonomické v Praze
+  </p>
+</div>
+""", unsafe_allow_html=True)
 
 
 
