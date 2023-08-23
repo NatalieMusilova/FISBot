@@ -77,11 +77,17 @@ with textcontainer:
     if query:
         with st.spinner("typing..."):
             conversation_string = get_conversation_string()
-            refined_query = query_refiner (conversation_string, query)
-            st.subheader("Zdá se, že chceš vědět:")
-            st.write(refined_query)
-            context = find_match(refined_query)
-            response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
+            refined_query = query_refiner(conversation_string, query)
+
+            if query.lower() in who_are_you:  # kdo jsi, co umis
+                response = who_are_you_res
+            else:
+                if len(st.session_state["responses"]) > 4: #Finding the closest matching questions based on a textual corpus will only be done if there are more than 4 responses in the conversation history
+                    st.subheader("Zdá se, že chceš vědět:")
+                    st.write(refined_query)
+
+                context = find_match(refined_query)
+                response = conversation.predict(input=f"Context:\n{context}\n\nQuery:\n{query}")
         st.session_state.requests.append(query)
         st.session_state.responses.append(response)
 
