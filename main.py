@@ -18,7 +18,7 @@ st.set_page_config(page_title="FISBot - Natalie Musilová", page_icon="🤖", in
 # Text 
 title = '<p style="font-family:sans-serif; color: #00957d; font-size: 42px; font-weight: bold;">FISBot</p>'
 # Image
-img = "https://raw.githubusercontent.com/NatalieMusilova/4IZ580/main/FIS_1_logo_rgb.png" 
+img = "https://raw.githubusercontent.com/NatalieMusilova/FISBot/main/imgs/FIS_1_logo_rgb.png" 
 
 # Create columns
 col1, col2 = st.columns(2)
