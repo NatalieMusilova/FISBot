@@ -59,7 +59,7 @@ if "buffer_memry" not in st.session_state:
 system_msg_template = SystemMessagePromptTemplate.from_template("""
 Odpovídej na otázky pouze v češtině a poskytuj pravdivé informace jen na základě Human Context.
 Pokud jsou v dotazu vulgární slova, řekni 'Sprostá slova na akademickou půdu nepatří, zkus to ještě jednou a slušně.'.
-Pokud neznáš odpověď, řekni 'Na tuto otázku nemám odpověď, prosím, přeformuluj ji'.
+Pokud neznáš odpověď, řekni 'Na tuto otázku nemám odpověď, prosím, přeformuluj ji. Nebo napiš email na adresu fis@vse.cz.'.
 Pokud máš odkaz na stránku s podrobnějšími informacemi souvisejícími s uživatelským dotazem, uveď jej v odpovědi.
 """)
 human_msg_template = HumanMessagePromptTemplate.from_template(template="{input}")
