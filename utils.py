@@ -10,8 +10,8 @@ index = pinecone.Index('fisbot')
 
 def find_match(input):
     input_em = model.encode(input).tolist()
-    result = index.query(input_em, top_k=2, includeMetadata=True)
-    return result['matches'][0]['metadata']['text']+"\n"+result['matches'][1]['metadata']['text']
+    result = index.query(input_em, top_k=3, includeMetadata=True)
+    return result['matches'][0]['metadata']['text']+"\n"+result['matches'][1]['metadata']['text']+result['matches'][2]['metadata']['text']
 
 
 def get_conversation_string():
