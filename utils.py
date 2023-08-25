@@ -1,11 +1,9 @@
-import openai
 import streamlit as st
 import pinecone
 from sentence_transformers import SentenceTransformer
-openai_api_key= st.secrets['OPENAI_API_KEY']
-openai.api_key=openai_api_key
+
 PINECODE_API_KEY=st.secrets['PINECODE_API_KEY']
-model = SentenceTransformer('all-MiniLM-L6-v2')
+model = SentenceTransformer('sentence-transformers/multi-qa-mpnet-base-dot-v1')
 
 pinecone.init(api_key=PINECODE_API_KEY,  environment="us-west4-gcp-free")
 index = pinecone.Index('fisbot')
@@ -15,18 +13,6 @@ def find_match(input):
     result = index.query(input_em, top_k=2, includeMetadata=True)
     return result['matches'][0]['metadata']['text']+"\n"+result['matches'][1]['metadata']['text']
 
-def query_refiner(conversation, query):
-
-    response = openai.Completion.create(
-    model="text-davinci-003",
-    prompt=f"Na základě uživatelského dotazu a konverzačního logu formuluj otázku, která by byla nejrelevantnější pro poskytnutí uživateli odpovědi z databáze znalostí.\n\nCONVERSATION LOG: \n{conversation}\n\nQuery: {query}\n\nRefined Query:",
-    temperature=0.7,
-    max_tokens=256,
-    top_p=1,
-    frequency_penalty=0,
-    presence_penalty=0
-    )
-    return response['choices'][0]['text']
 
 def get_conversation_string():
     conversation_string = ""
