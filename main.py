@@ -47,13 +47,12 @@ if "responses" not in st.session_state:
 if "requests" not in st.session_state:
     st.session_state["requests"] = []
 
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", 
+llm = ChatOpenAI(model_name="gpt-3.5-turbo-16k", 
 openai_api_key=st.secrets['OPENAI_API_KEY'])
 
 
-if "buffer_memry" not in st.session_state:
-    st.session_state.buffer_memory=ConversationBufferWindowMemory (k=3,
-    return_messages=True)
+if 'buffer_memory' not in st.session_state:
+            st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
 
 
 system_msg_template = SystemMessagePromptTemplate.from_template("""
@@ -78,25 +77,17 @@ with textcontainer:
     if query:
         with st.spinner("typing..."):
             conversation_string = get_conversation_string()
-            refined_query = query_refiner(conversation_string, query)
-
             if query.lower() in who_are_you:  # kdo jsi, co umis
                 response = who_are_you_res
             else:
-                if len(st.session_state["responses"]) > 4: #Finding the closest matching questions based on a textual corpus will only be done if there are more than 4 responses in the conversation history
-                    st.subheader("Zdá se, že chceš vědět:")
-                    st.write(refined_query)
-
-                context = find_match(refined_query)
+                context = find_match(query)
                 response = conversation.predict(input=f"Context:\n{context}\n\nQuery:\n{query}")
         st.session_state.requests.append(query)
         st.session_state.responses.append(response)
-
 with response_container:
     if st.session_state['responses']:
+
         for i in range(len(st.session_state['responses'])):
             message(st.session_state['responses'][i],key=str(i))
             if i < len(st.session_state['requests']):
                 message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
-
-
