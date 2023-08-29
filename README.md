@@ -8,5 +8,12 @@ To try my chatbot visit the following link: [FISBot - Interactive Chatbot](https
 Here's a glimpse of FISBot's architecture:
 
 ![FISBot Architecture](imgs/architecture.png)
+## Prerequisites
+To carry out the whole process, I needed to have the following accounts:
+- OpenAI account,
+- Pinecone account,
+- Github account,
+- Streamlit account.
+
 
 
