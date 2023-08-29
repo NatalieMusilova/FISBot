@@ -8,3 +8,5 @@ To try my chatbot visit the following link: [FISBot - Interactive Chatbot](https
 Here's a glimpse of FISBot's architecture:
 
 ![FISBot Architecture](imgs/architecture.png)
+
+Currently, the chatbot’s responses to user queries are satisfactory, but there’s room for improvement.
