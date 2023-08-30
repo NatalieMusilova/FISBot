@@ -52,7 +52,7 @@ openai_api_key=st.secrets['OPENAI_API_KEY'])
 
 
 if 'buffer_memory' not in st.session_state:
-            st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
+            st.session_state.buffer_memory=ConversationBufferWindowMemory(k=2,return_messages=True)
 
 
 system_msg_template = SystemMessagePromptTemplate.from_template("""
@@ -72,18 +72,25 @@ response_container = st.container()
 # container for text box
 textcontainer = st.container()
 
-with textcontainer:
-    query = st.text_input("Zde můžeš zadat svůj dotaz: ", key="input")
-    if query:
+
+def on_message_change():
+    if st.session_state.input:
         with st.spinner("typing..."):
             conversation_string = get_conversation_string()
-            if query.lower() in who_are_you:  # kdo jsi, co umis
+            if st.session_state.input.lower() in who_are_you:  # kdo jsi, co umis
                 response = who_are_you_res
             else:
-                context = find_match(query)
-                response = conversation.predict(input=f"Context:\n{context}\n\nQuery:\n{query}")
-        st.session_state.requests.append(query)
-        st.session_state.responses.append(response)
+                context = find_match(st.session_state.input)
+                response = conversation.predict(input=f"Context:\n{context}\n\nQuery:\n{st.session_state.input}")
+
+    st.session_state.requests.append(st.session_state.input)
+    st.session_state.responses.append(response)
+    st.session_state.input = ""
+
+
+with textcontainer:
+    query = st.text_input("Zde můžeš zadat svůj dotaz: ", key="input", on_change=on_message_change)
+
 with response_container:
     if st.session_state['responses']:
 
